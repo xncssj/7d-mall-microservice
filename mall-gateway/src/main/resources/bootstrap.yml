@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: test
+  application:
+    name: mall-gateway
+
+reactor:
+  netty:
+    ioWorkerCount: 60

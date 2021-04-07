@@ -1,0 +1,6 @@
+FROM registry.cn-beijing.aliyuncs.com/xngczl/oraclejdk-linux-64:1.8.0_261
+VOLUME /tmp
+ADD mall-gateway-1.0-SNAPSHOT.jar app.jar
+RUN bash -c 'touch /app.jar'
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+ENTRYPOINT ["java","-Dapp.id=svc-mall-gateway","-javaagent:/opt/skywalking/agent/skywalking-agent.jar","-Dskywalking.agent.service_name=svc-mall-gateway","-Dskywalking.collector.backend_service=skywalking-oap:11800","-Dcom.sun.management.jmxremote","-Dcom.sun.management.jmxremote.authenticate=false","-Dcom.sun.management.jmxremote.ssl=false","-Dcom.sun.management.jmxremote.port=1100","-Dcom.sun.management.jmxremote.rmi.port=1100","-Djava.rmi.server.hostname=localhost","-Xms2g","-Xmx2g","-XX:MetaspaceSize=1g","-XX:MaxMetaspaceSize=1g","-Xmn1g","-XX:+UseParNewGC","-XX:ParallelGCThreads=6","-XX:+HeapDumpOnOutOfMemoryError","-XX:+PrintGCDetails","-XX:+PrintGCDateStamps","-XX:+PrintTenuringDistribution","-XX:+PrintGCApplicationStoppedTime","-XX:+PrintGCApplicationConcurrentTime","-XX:+PrintGCDetails","-Xloggc:gc.log","-Dreactor.netty.http.server.accessLogEnabled=true","-jar","-Dspring.profiles.active=prod","-Djava.security.egd=file:/dev/./urandom","/app.jar"]

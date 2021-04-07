@@ -1,0 +1,5 @@
+172.16.106.195 cloud-gateway.mall.demo.com
+172.16.106.195 monitor.mall.demo.com
+172.16.106.195 cloud-rabbitmq.demo.com
+172.16.106.195 sentinel-dashboard.demo.com
+172.16.106.195 skywalking.demo.com
