@@ -3,7 +3,7 @@
 
 ## 项目介绍
 
-`7d-mall`是一套微服务商城系统，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、Elasticsearch等核心技术。`7d-mall`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。。 
+`7d-mall-microservice`是一套微服务商城系统，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、Elasticsearch等核心技术。`7d-mall-microservice`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。。 
 
 ## 系统架构图
 
