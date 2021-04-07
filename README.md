@@ -32,7 +32,31 @@ mall
 ## 系统技术栈
 
 
-![系统技术栈](https://uploader.shimo.im/f/K0NoLNzFOEumQs9r.jpg!thumbnail)
+| **技术组件** |**说明**|**官网**|
+|:----|:----|:----|
+|kubernetes(k8s)|容器云|https://kubernetes.io|
+|helm|k8s 包管理器|https://helm.sh|
+|Docker|应用容器引擎|https://www.docker.com|
+|Weave Scope|k8s 可视化监控工具|https://www.weave.works|
+|Spring Cloud|微服务框架|https://spring.io/projects/spring-cloud|
+|Spring Cloud Alibaba|微服务框架|https://github.com/alibaba/spring-cloud-alibaba|
+|Spring Boot|容器+ MVC 框架|https://spring.io/projects/spring-boot|
+|Knife4j|文档生产工具|https://github.com/xiaoymin/swagger-bootstrap-ui|
+|Elasticsearch|搜索引擎|https://github.com/elastic/elasticsearch|
+|RabbitMq|消息队列|https://www.rabbitmq.com|
+|Redis|分布式缓存|https://redis.io|
+|MongoDb|NoSql数据库|https://www.mongodb.com|
+|LogStash|应用日志收集|https://github.com/logstash/logstash-logback-encoder|
+|Jenkins|DevOps 调度工具|https://github.com/jenkinsci/jenkins|
+|Promethues|资源监控系统|https://prometheus.io|
+|Grafana|监控可视化看板|https://grafana.com|
+|harbor|Docker 镜像仓库|https://github.com/goharbor/harbor-helm|
+|SkyWalking|分布式追踪、服务网格遥测分析、度量聚合和可视化一体化解决方案|http://skywalking.apache.org|
+|Kibana|日志可视化看板|https://www.elastic.co/cn/downloads/kibana|
+|Fluentd|容器日志收集|https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch|
+|Gitlab|代码仓库|https://about.gitlab.com|
+|Nexus3 OSS|制品仓库|https://www.sonatype.com|
+|Jmeter|压测引擎|https://jmeter.apache.org|
 
 ## 环境搭建
 
