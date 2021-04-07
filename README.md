@@ -51,6 +51,6 @@ mall
 
 ## 许可证
 
-[Apache License 2.0](https://gitee.com/perfmance/mall-swarm-new/raw/master/LICENSE)
+[Apache License 2.0](LICENSE)
 
 Copyright (c) 2020-2022 7DGroup
