@@ -58,9 +58,11 @@ mall
 |Nexus3 OSS|制品仓库|https://www.sonatype.com|
 |Jmeter|压测引擎|https://jmeter.apache.org|
 
-## 环境搭建
+## 部署架构
 
 ![部署架构图](https://img-blog.csdnimg.cn/20210330185951870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p1b3pld2Vp,size_16,color_FFFFFF,t_70)
+
+## 环境搭建
 
 ## 运行效果展示
 
