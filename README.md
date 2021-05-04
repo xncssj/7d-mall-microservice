@@ -1,13 +1,8 @@
 # 7d-mall
 
-
 ## 项目介绍
 
 `7d-mall-microservice`是一套微服务商城系统，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、Elasticsearch等核心技术。`7d-mall-microservice`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。。 
-
-## 系统架构图
-
-![系统架构图](https://uploader.shimo.im/f/Mfo8gDbIqbaKPwsw.jpg!thumbnail)
 
 ## 组织结构
 
@@ -27,7 +22,6 @@ mall
 ├── mall-demo -- 微服务远程调用测试服务
 └── config -- 配置中心存储的配置
 ```
-
 
 ## 系统技术栈
 
@@ -61,10 +55,6 @@ mall
 ## 部署架构
 
 ![部署架构图](https://img-blog.csdnimg.cn/20210330185951870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p1b3pld2Vp,size_16,color_FFFFFF,t_70)
-
-## 环境搭建
-
-## 运行效果展示
 
 
 ## 公众号
