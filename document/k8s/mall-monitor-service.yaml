@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monitor-mall-monitor
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: monitor-mall-monitor
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: monitor-mall-monitor
+    spec:
+      initContainers:
+        - name: init-skywalking-agent
+          image: registry.cn-beijing.aliyuncs.com/xngczl/skywalking-agent:8.1.0
+          command:
+            - "sh"
+            - "-c"
+            - "set -ex;mkdir -p /vmskywalking/agent;cp -r /skywalking/agent/* /vmskywalking/agent;"
+          volumeMounts:
+            - mountPath: /vmskywalking/agent
+              name: skywalking-agent
+      containers:
+        - image: registry.cn-beijing.aliyuncs.com/xngczl/mall-monitor:1.0
+          imagePullPolicy: Always
+          name: mall-monitor
+          ports:
+            - containerPort: 8101
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /opt/skywalking/agent
+              name: skywalking-agent
+      volumes:
+        - name: skywalking-agent
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: monitor-mall-monitor
+spec:
+  type: NodePort         // 配置为NodePort，外部可以访问
+  ports:
+    - name: http
+      port: 8101
+      protocol: TCP
+      targetPort: 8101
+      nodePort: 30002      // NodePort，外部访问的端口
+  selector:
+    app: monitor-mall-monitor

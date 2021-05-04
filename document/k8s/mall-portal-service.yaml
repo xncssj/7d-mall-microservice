@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: svc-mall-portal
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: svc-mall-portal
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: svc-mall-portal
+    spec:
+      initContainers:
+        - name: init-skywalking-agent
+          image: registry.cn-beijing.aliyuncs.com/xngczl/skywalking-agent:8.1.0
+          command:
+            - 'sh'
+            - '-c'
+            - 'set -ex;mkdir -p /vmskywalking/agent;cp -r /skywalking/agent/* /vmskywalking/agent;'
+          volumeMounts:
+            - mountPath: /vmskywalking/agent
+              name: skywalking-agent
+      containers:
+        - image: registry.cn-beijing.aliyuncs.com/xngczl/mall-portal:1.0
+          imagePullPolicy: Always
+          name: mall-portal
+          ports:
+            - containerPort: 8085
+              protocol: TCP
+          volumeMounts:
+            - mountPath: /opt/skywalking/agent
+              name: skywalking-agent
+      volumes:
+        - name: skywalking-agent
+          emptyDir: {}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svc-mall-portal
+spec:
+  ports:
+    - name: http
+      port: 8085
+      protocol: TCP
+      targetPort: 8085
+  selector:
+    app: svc-mall-portal
