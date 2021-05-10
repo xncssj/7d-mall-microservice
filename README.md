@@ -6,51 +6,53 @@
 
 ## 组织结构
 
-``` lua
-mall
-├── mall-common -- 工具类及通用代码模块
-├── mall-mbg -- MyBatisGenerator生成的数据库操作代码模块
-├── mall-auth -- 基于Spring Security Oauth2的统一的认证中心
+```lua
+7d-mall
+├── mall-common  -- 工具类及通用代码模块
+├── mall-mbg     -- MyBatisGenerator生成的数据库操作代码模块
+├── mall-auth    -- 基于Spring Security Oauth2的统一的认证中心
 ├── mall-gateway -- 基于Spring Cloud Gateway的微服务API网关服务
 ├── mall-monitor -- 基于Spring Boot Admin的微服务监控中心
-├── mall-member -- 会员系统服务
-├── mall-order -- 订单系统服务
-├── mall-cart -- 购物车系统服务
-├── mall-admin -- 后台管理系统服务
-├── mall-search -- 基于Elasticsearch的商品搜索系统服务
-├── mall-portal -- 商城后台系统服务
-├── mall-demo -- 微服务远程调用测试服务
-└── config -- 配置中心存储的配置
+├── mall-member  -- 会员系统服务
+├── mall-order   -- 订单系统服务
+├── mall-cart    -- 购物车系统服务
+├── mall-admin   -- 后台管理系统服务
+├── mall-search  -- 基于Elasticsearch的商品搜索系统服务
+├── mall-portal  -- 商城后台系统服务
+├── mall-demo    -- 微服务远程调用测试服务
+└── config       -- 配置中心存储的配置
 ```
 
 ## 系统技术栈
 
 
-| **技术组件** |**说明**|**官网**|
-|:----|:----|:----|
-|kubernetes(k8s)|容器云|https://kubernetes.io|
-|helm|k8s 包管理器|https://helm.sh|
-|Docker|应用容器引擎|https://www.docker.com|
-|Weave Scope|k8s 可视化监控工具|https://www.weave.works|
-|Spring Cloud|微服务框架|https://spring.io/projects/spring-cloud|
-|Spring Cloud Alibaba|微服务框架|https://github.com/alibaba/spring-cloud-alibaba|
-|Spring Boot|容器+ MVC 框架|https://spring.io/projects/spring-boot|
-|Knife4j|文档生产工具|https://github.com/xiaoymin/swagger-bootstrap-ui|
-|Elasticsearch|搜索引擎|https://github.com/elastic/elasticsearch|
-|RabbitMq|消息队列|https://www.rabbitmq.com|
-|Redis|分布式缓存|https://redis.io|
-|MongoDb|NoSql数据库|https://www.mongodb.com|
-|LogStash|应用日志收集|https://github.com/logstash/logstash-logback-encoder|
-|Jenkins|DevOps 调度工具|https://github.com/jenkinsci/jenkins|
-|Promethues|资源监控系统|https://prometheus.io|
-|Grafana|监控可视化看板|https://grafana.com|
-|harbor|Docker 镜像仓库|https://github.com/goharbor/harbor-helm|
+
+| 技术                   | 说明                 | 官网                                                 |
+| ---------------------- | -------------------- |:---------------------------------------------------- |
+| Spring Cloud           | 微服务框架           | https://spring.io/projects/spring-cloud              |
+| Spring Cloud Alibaba   | 微服务框架           | https://github.com/alibaba/spring-cloud-alibaba      |
+| Spring Boot            | 容器+MVC框架         | https://spring.io/projects/spring-boot               |
+| Spring Security Oauth2 | 认证和授权框架       | https://spring.io/projects/spring-security-oauth     |
+| MyBatis                | ORM框架              | http://www.mybatis.org/mybatis-3/zh/index.html       |
+| MyBatisGenerator       | 数据层代码生成       | http://www.mybatis.org/generator/index.html          |
+| PageHelper             | MyBatis物理分页插件  | http://git.oschina.net/free/Mybatis_PageHelper       |
+| Knife4j                | 文档生产工具         | https://github.com/xiaoymin/swagger-bootstrap-ui     |
+| Elasticsearch          | 搜索引擎             | https://github.com/elastic/elasticsearch             |
+| RabbitMq               | 消息队列             | https://www.rabbitmq.com/                            |
+| Redis                  | 分布式缓存           | https://redis.io/                                    |
+| MongoDb                | NoSql数据库          | https://www.mongodb.com/                             |
+| Docker                 | 应用容器引擎         | https://www.docker.com/                              |
+| Druid                  | 数据库连接池         | https://github.com/alibaba/druid                     |
+| OSS                    | 对象存储             | https://github.com/aliyun/aliyun-oss-java-sdk        |
+| MinIO                  | 对象存储             | https://github.com/minio/minio                       |
+| JWT                    | JWT登录支持          | https://github.com/jwtk/jjwt                         |
+| LogStash               | 日志收集             | https://github.com/logstash/logstash-logback-encoder |
+| Lombok                 | 简化对象封装工具     | https://github.com/rzwitserloot/lombok               |
+| Seata                  | 全局事务管理框架     | https://github.com/seata/seata                       |
+| Kubernetes             | 应用容器管理平台     | https://kubernetes.io/                               |
+|Sentinel|服务保护|https://sentinelguard.io/zh-cn/|
 |SkyWalking|分布式追踪、服务网格遥测分析、度量聚合和可视化一体化解决方案|http://skywalking.apache.org|
-|Kibana|日志可视化看板|https://www.elastic.co/cn/downloads/kibana|
-|Fluentd|容器日志收集|https://github.com/kubernetes/kubernetes/tree/master/cluster/addons/fluentd-elasticsearch|
-|Gitlab|代码仓库|https://about.gitlab.com|
-|Nexus3 OSS|制品仓库|https://www.sonatype.com|
-|Jmeter|压测引擎|https://jmeter.apache.org|
+
 
 ## 部署架构
 
