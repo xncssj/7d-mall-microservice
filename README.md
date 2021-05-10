@@ -2,7 +2,8 @@
 
 ## 项目介绍
 
-`7d-mall-microservice` 是一套微服务电商，其是在开源电商项目 [mall-swarm](https://github.com/macrozheng/mall-swarm) 上进行了改造，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、k8s、Elasticsearch 等核心技术。`7d-mall-microservice`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。。 
+`7d-mall-microservice` 是一套微服务电商，其是在开源电商项目 [mall-swarm](https://github.com/macrozheng/mall-swarm) 上进行了改造，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、k8s、Elasticsearch 等核心技术。
+`7d-mall-microservice`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。。 
 
 ## 组织结构
 
