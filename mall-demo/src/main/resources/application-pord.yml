@@ -1,0 +1,43 @@
+server:
+  port: 8082
+  tomcat:
+    basedir: /var/tmp
+    background-processor-delay: 30
+    redirect-context-root: true
+    uri-encoding: UTF-8
+    accesslog:
+      enabled: true
+      buffered: true
+      directory: ./log
+      file-date-format: .yyyy-MM-dd
+      pattern: '%h %l %u %t "%r" %s %b "%{Referer}i" "%{User-Agent}i" %D ms %F ms'
+      prefix: access_log
+      rename-on-rotate: false
+      request-attributes-enabled: false
+      rotate: true
+      suffix: .log
+spring:
+  datasource:
+    url: jdbc:mysql://mysql-min:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: reader
+    password: 123456
+  redis:
+    database: 0
+    port: 6379
+    host: cloud-redis
+    password:
+mybatis:
+  mapper-locations:
+    - classpath:mapper/*.xml
+    - classpath*:com/**/mapper/*.xml
+management: #开启SpringBoot Admin的监控
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+feign:
+  okhttp:
+    enabled: true

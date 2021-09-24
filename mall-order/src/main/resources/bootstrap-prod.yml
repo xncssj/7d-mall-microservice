@@ -1,0 +1,13 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.16.106.130:8848
+      config:
+        server-addr: 172.16.106.130:8848
+        file-extension: yaml
+    sentinel:
+      transport:
+        dashboard: http://sentinel-dashboard.demo.com
+        port: 8719
+      eager: true

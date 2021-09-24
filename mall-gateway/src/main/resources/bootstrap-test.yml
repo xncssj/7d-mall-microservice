@@ -2,12 +2,15 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://39.105.6.61:8848
+        server-addr: http://cloud-nacos-registry:8848
       config:
-        server-addr: http://39.105.6.61:8848
+        server-addr: http://cloud-nacos-registry:8848
         file-extension: yaml
     sentinel:
       transport:
-        dashboard: http://39.105.6.61:8858
+        dashboard: cloud-sentinel-dashboard:8858
         port: 8719
       eager: true
+reactor:
+  netty:
+    ioWorkerCount: 6

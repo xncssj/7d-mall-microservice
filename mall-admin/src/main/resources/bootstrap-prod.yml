@@ -1,0 +1,12 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://172.16.62.179:8848
+      config:
+        server-addr: http://172.16.62.179:8848
+        file-extension: yaml
+    sentinel:
+      transport:
+        dashboard: http://172.16.62.179:8858
+      eager: true
