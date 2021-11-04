@@ -14,7 +14,7 @@
 
     <parent>
         <groupId>com.dunshan.mall</groupId>
-        <artifactId>mall-swarm</artifactId>
+        <artifactId>7d-mall-microservice</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
