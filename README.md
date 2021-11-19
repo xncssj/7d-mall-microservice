@@ -2,7 +2,7 @@
 
 ## 背景说明
 
-极客时间「高楼的性能工程实战课」课程项目
+极客时间「高楼的性能工程实战课」专栏项目
 
 课程地址：https://time.geekbang.org/column/intro/100074001?tab=intro
 
