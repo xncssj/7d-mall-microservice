@@ -1,6 +1,10 @@
 # 7d-mall
 
-https://time.geekbang.org/column/intro/100093001?tab=catalog
+## 背景说明
+
+极客时间「高楼的性能工程实战课」课程示例
+
+课程地址：https://time.geekbang.org/column/intro/100093001?tab=intro
 
 ## 项目介绍
 
