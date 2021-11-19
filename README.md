@@ -1,5 +1,7 @@
 # 7d-mall
 
+https://time.geekbang.org/column/intro/100093001?tab=catalog
+
 ## 项目介绍
 
 `7d-mall-microservice` 是一套微服务电商，其是在开源电商项目 [mall-swarm](https://github.com/macrozheng/mall-swarm) 上进行了改造，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、k8s、Elasticsearch 等核心技术。
