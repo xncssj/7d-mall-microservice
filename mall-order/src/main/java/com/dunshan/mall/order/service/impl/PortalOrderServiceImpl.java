@@ -902,9 +902,11 @@ public class PortalOrderServiceImpl implements PortalOrderService {
      */
     private void lockStock(List<CartPromotionItem> cartPromotionItemList) {
         for (CartPromotionItem cartPromotionItem : cartPromotionItemList) {
-            PmsSkuStock skuStock = skuStockMapper.selectByPrimaryKey(cartPromotionItem.getProductSkuId());
-            skuStock.setLockStock(skuStock.getLockStock() + cartPromotionItem.getQuantity());
-            skuStockMapper.updateByPrimaryKeySelective(skuStock);
+//            PmsSkuStock skuStock = skuStockMapper.selectByPrimaryKey(cartPromotionItem.getProductSkuId());
+//            skuStock.setLockStock(skuStock.getLockStock() + cartPromotionItem.getQuantity());
+//            skuStockMapper.updateByPrimaryKeySelective(skuStock);
+             logger.info("修改库存sku {}", cartPromotionItem.getProductSkuId());
+            skuStockMapper.updateSkuStock(cartPromotionItem.getProductSkuId(), cartPromotionItem.getQuantity());
         }
     }
 

@@ -91,6 +91,7 @@ public class PmsPortalProductServiceImpl implements PmsPortalProductService {
         //获取商品属性信息
         PmsProductAttributeExample attributeExample = new PmsProductAttributeExample();
         attributeExample.createCriteria().andProductAttributeCategoryIdEqualTo(product.getProductAttributeCategoryId());
+
         List<PmsProductAttribute> productAttributeList = productAttributeMapper.selectByExample(attributeExample);
         result.setProductAttributeList(productAttributeList);
         //获取商品属性值信息

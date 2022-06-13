@@ -73,7 +73,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, product_id, sku_code, price, stock, low_stock, pic, sale, promotion_price, lock_stock, 
+    id, product_id, sku_code, price, stock, low_stock, pic, sale, promotion_price, lock_stock,
     sp_data
   </sql>
   <select id="selectByExample" parameterType="com.dunshan.mall.model.PmsSkuStockExample" resultMap="BaseResultMap">
@@ -91,7 +91,7 @@
     </if>
   </select>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from pms_sku_stock
     where id = #{id,jdbcType=BIGINT}
@@ -110,13 +110,13 @@
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into pms_sku_stock (product_id, sku_code, price, 
-      stock, low_stock, pic, 
-      sale, promotion_price, lock_stock, 
+    insert into pms_sku_stock (product_id, sku_code, price,
+      stock, low_stock, pic,
+      sale, promotion_price, lock_stock,
       sp_data)
-    values (#{productId,jdbcType=BIGINT}, #{skuCode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
-      #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR}, 
-      #{sale,jdbcType=INTEGER}, #{promotionPrice,jdbcType=DECIMAL}, #{lockStock,jdbcType=INTEGER}, 
+    values (#{productId,jdbcType=BIGINT}, #{skuCode,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL},
+      #{stock,jdbcType=INTEGER}, #{lowStock,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR},
+      #{sale,jdbcType=INTEGER}, #{promotionPrice,jdbcType=DECIMAL}, #{lockStock,jdbcType=INTEGER},
       #{spData,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.dunshan.mall.model.PmsSkuStock">
@@ -302,5 +302,9 @@
       lock_stock = #{lockStock,jdbcType=INTEGER},
       sp_data = #{spData,jdbcType=VARCHAR}
     where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <update id="updateSkuStock">
+    update pms_sku_stock set stock = stock-#{quantity} where sku_code=#{skuId} and stock>=0
   </update>
 </mapper>

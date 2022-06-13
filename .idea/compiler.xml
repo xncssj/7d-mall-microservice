@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mall-cart" />
+        <module name="mall-search" />
+        <module name="mall-admin" />
+        <module name="mall-demo" />
+        <module name="mall-mbg" />
+        <module name="mall-auth" />
+        <module name="mall-monitor" />
+        <module name="mall-order" />
+        <module name="mall-common" />
+        <module name="mall-portal" />
+        <module name="mall-gateway" />
+        <module name="mall-member" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="7d-mall-microservice" target="1.8" />
+      <module name="mall-admin" target="1.8" />
+      <module name="mall-auth" target="1.8" />
+      <module name="mall-cart" target="1.8" />
+      <module name="mall-common" target="1.8" />
+      <module name="mall-demo" target="1.8" />
+      <module name="mall-gateway" target="1.8" />
+      <module name="mall-mbg" target="1.8" />
+      <module name="mall-member" target="1.8" />
+      <module name="mall-monitor" target="1.8" />
+      <module name="mall-order" target="1.8" />
+      <module name="mall-portal" target="1.8" />
+      <module name="mall-search" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="mall-admin" options="-parameters" />
+      <module name="mall-auth" options="-parameters" />
+      <module name="mall-cart" options="-parameters" />
+      <module name="mall-common" options="-parameters" />
+      <module name="mall-demo" options="-parameters" />
+      <module name="mall-gateway" options="-parameters" />
+      <module name="mall-mbg" options="-parameters" />
+      <module name="mall-member" options="-parameters" />
+      <module name="mall-monitor" options="-parameters" />
+      <module name="mall-order" options="-parameters" />
+      <module name="mall-portal" options="-parameters" />
+      <module name="mall-search" options="-parameters" />
+    </option>
+  </component>
+</project>
