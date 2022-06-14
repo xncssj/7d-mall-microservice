@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dccdc62-d441-4c73-ae04-fac2be94435f" name="Default Changelist" comment="增加事物">
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/java/com/dunshan/mall/portal/component/CancelOrderReceiver.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/java/com/dunshan/mall/portal/component/OrderTimeOutCancelTask.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/java/com/dunshan/mall/portal/service/impl/PmsPortalProductServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/java/com/dunshan/mall/portal/service/impl/PmsPortalProductServiceImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="1dccdc62-d441-4c73-ae04-fac2be94435f" name="Default Changelist" comment="增加事物" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -44,6 +40,9 @@
     <option name="version" value="1" />
   </component>
   <component name="ProjectId" id="23Awdwaa1FfLJnZdemj9svq0JaS" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -64,6 +63,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/mall-common/src/main/java/com/dunshan/mall/common" />
       <recent name="$PROJECT_DIR$/mall-member/src/main/java/com/dunshan/mall/member/repository" />
     </key>
@@ -165,6 +165,7 @@
       <workItem from="1655086405122" duration="254000" />
       <workItem from="1655098515035" duration="380000" />
       <workItem from="1655123580891" duration="303000" />
+      <workItem from="1655128525159" duration="743000" />
     </task>
     <task id="LOCAL-00001" summary="update  MemberReadHistoryRepository 实现">
       <created>1641190570737</created>

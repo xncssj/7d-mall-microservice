@@ -6,6 +6,12 @@
 
 课程地址：https://time.geekbang.org/column/intro/100074001?tab=intro
 
+[全链路压测实战 30 讲](https://time.geekbang.org/column/intro/100093001?tab=catalog)
+
+[高楼的性能工程实战课](https://time.geekbang.org/column/article/378983?cid=100074001)
+
+[性能测试实战 30 讲](https://time.geekbang.org/column/article/187963?cid=100042501)
+
 ## 项目介绍
 
 `7d-mall-microservice` 是一套微服务电商，其是在开源电商项目 [mall-swarm](https://github.com/macrozheng/mall-swarm) 上进行了改造，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、k8s、Elasticsearch 等核心技术。
