@@ -305,6 +305,6 @@
   </update>
 
   <update id="updateSkuStock">
-    update pms_sku_stock set stock = stock-#{quantity} where sku_code=#{skuId} and stock>=0
+    update pms_sku_stock set lock_stock = lock_stock+#{quantity} where id = #{id,jdbcType=BIGINT} and stock>=0
   </update>
 </mapper>
