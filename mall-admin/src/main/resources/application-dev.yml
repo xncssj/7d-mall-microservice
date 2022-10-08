@@ -50,7 +50,7 @@ redis:
 aliyun:
   oss:
     endpoint: oss-cn-beijing.aliyuncs.com # oss对外服务的访问域名
-    accessKeyId: LTAI4G1VRffC4D7CmBv5dFwZ # 访问身份验证中用到用户标识
+    accessKeyId: LTAI4G1VRffC4D7CmBv5dFeq # 访问身份验证中用到用户标识
     accessKeySecret: v8afbIbKpjPqiI26slcdXQHB0kjJDR # 用户用于加密签名字符串和oss用来验证签名字符串的密钥
     bucketName: perfo7 # oss的存储空间
     policy:
