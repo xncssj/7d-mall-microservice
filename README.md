@@ -14,12 +14,21 @@
 
 ## 项目介绍
 
-`7d-mall-microservice` 是一套微服务电商，其是在开源电商项目 [mall-swarm](https://github.com/macrozheng/mall-swarm) 上进行了改造，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、k8s、Elasticsearch 等核心技术。
-`7d-mall-microservice`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。。 
+`7d-mall-microservice` 是一套微服务电商，其是在开源电商项目 [mall-swarm](https://github.com/macrozheng/mall-swarm) 上进行了改造，采用了 Spring Cloud Hoxton & Alibaba、Spring Boot 2.3、Oauth2、MyBatis、Docker、k8s、Elasticsearch 等核心技术.
+`7d-mall-microservice`在电商业务的基础集成了注册中心、配置中心、监控中心、网关等系统功能。
+
+## 分布式追踪与日志系统
+
+本项目集成了 Zipkin 分布式追踪系统和统一日志管理：
+
+- **Zipkin 分布式追踪**：所有微服务均已集成 Spring Cloud Sleuth 和 Zipkin 客户端，支持跨服务调用链路追踪
+- **统一日志管理**：通过 mall-common 模块提供统一的日志配置，支持控制台输出、文件记录和 Logstash 集中收集
+- **MySQL 追踪**：集成了 brave-instrumentation-mysql8，支持数据库操作的追踪
+- **日志收集**：通过 Logback 配置将日志发送到 Logstash，最终可存储到 Elasticsearch 进行分析
 
 ## 组织结构
 
-```lua
+```
 7d-mall
 ├── mall-common  -- 工具类及通用代码模块
 ├── mall-mbg     -- MyBatisGenerator生成的数据库操作代码模块
@@ -38,34 +47,32 @@
 
 ## 系统技术栈
 
-
-
-| 技术                   | 说明                 | 官网                                                 |
-| ---------------------- | -------------------- |:---------------------------------------------------- |
-| Spring Cloud           | 微服务框架           | https://spring.io/projects/spring-cloud              |
-| Spring Cloud Alibaba   | 微服务框架           | https://github.com/alibaba/spring-cloud-alibaba      |
-| Spring Boot            | 容器+MVC框架         | https://spring.io/projects/spring-boot               |
-| Spring Security Oauth2 | 认证和授权框架       | https://spring.io/projects/spring-security-oauth     |
-| MyBatis                | ORM框架              | http://www.mybatis.org/mybatis-3/zh/index.html       |
-| MyBatisGenerator       | 数据层代码生成       | http://www.mybatis.org/generator/index.html          |
-| PageHelper             | MyBatis物理分页插件  | http://git.oschina.net/free/Mybatis_PageHelper       |
-| Knife4j                | 文档生产工具         | https://github.com/xiaoymin/swagger-bootstrap-ui     |
-| Elasticsearch          | 搜索引擎             | https://github.com/elastic/elasticsearch             |
-| RabbitMq               | 消息队列             | https://www.rabbitmq.com/                            |
-| Redis                  | 分布式缓存           | https://redis.io/                                    |
-| MongoDb                | NoSql数据库          | https://www.mongodb.com/                             |
-| Docker                 | 应用容器引擎         | https://www.docker.com/                              |
-| Druid                  | 数据库连接池         | https://github.com/alibaba/druid                     |
-| OSS                    | 对象存储             | https://github.com/aliyun/aliyun-oss-java-sdk        |
-| MinIO                  | 对象存储             | https://github.com/minio/minio                       |
-| JWT                    | JWT登录支持          | https://github.com/jwtk/jjwt                         |
-| LogStash               | 日志收集             | https://github.com/logstash/logstash-logback-encoder |
-| Lombok                 | 简化对象封装工具     | https://github.com/rzwitserloot/lombok               |
-| Seata                  | 全局事务管理框架     | https://github.com/seata/seata                       |
-| Kubernetes             | 应用容器管理平台     | https://kubernetes.io/                               |
+| 技术 | 说明 | 官网 |
+| ---- | ---- | ---- |
+| Spring Cloud | 微服务框架 | https://spring.io/projects/spring-cloud |
+| Spring Cloud Alibaba | 微服务框架 | https://github.com/alibaba/spring-cloud-alibaba |
+| Spring Boot | 容器+MVC框架 | https://spring.io/projects/spring-boot |
+| Spring Security Oauth2 | 认证和授权框架 | https://spring.io/projects/spring-security-oauth |
+| MyBatis | ORM框架 | http://www.mybatis.org/mybatis-3/zh/index.html |
+| MyBatisGenerator | 数据层代码生成 | http://www.mybatis.org/generator/index.html |
+| PageHelper | MyBatis物理分页插件 | http://git.oschina.net/free/Mybatis_PageHelper |
+| Knife4j | 文档生产工具 | https://github.com/xiaoymin/swagger-bootstrap-ui |
+| Elasticsearch | 搜索引擎 | https://github.com/elastic/elasticsearch |
+| RabbitMq | 消息队列 | https://www.rabbitmq.com/ |
+| Redis | 分布式缓存 | https://redis.io/ |
+| MongoDb | NoSql数据库 | https://www.mongodb.com/ |
+| Docker | 应用容器引擎 | https://www.docker.com/ |
+| Druid | 数据库连接池 | https://github.com/alibaba/druid |
+| OSS | 对象存储 | https://github.com/aliyun/aliyun-oss-java-sdk |
+| MinIO | 对象存储 | https://github.com/minio/minio |
+| JWT | JWT登录支持 | https://github.com/jwtk/jjwt |
+| LogStash | 日志收集 | https://github.com/logstash/logstash-logback-encoder |
+| Zipkin | 分布式追踪系统 | https://zipkin.io/ |
+| Lombok | 简化对象封装工具 | https://github.com/rzwitserloot/lombok |
+| Seata | 全局事务管理框架 | https://github.com/seata/seata |
+| Kubernetes | 应用容器管理平台 | https://kubernetes.io/ |
 |Sentinel|服务保护|https://sentinelguard.io/zh-cn/|
 |SkyWalking|分布式追踪、服务网格遥测分析、度量聚合和可视化一体化解决方案|http://skywalking.apache.org|
-
 
 ## 系统架构
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20210509110259347.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p1b3pld2Vp,size_16,color_FFFFFF,t_70#pic_center)
@@ -74,6 +81,35 @@
 
 ![部署架构图](https://img-blog.csdnimg.cn/20210330185951870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3p1b3pld2Vp,size_16,color_FFFFFF,t_70)
 
+## 日志与追踪架构
+
+本项目采用统一的日志收集和分布式追踪架构：
+
+```
+微服务应用
+    ↓ (日志输出)
+Logback + Logstash Encoder
+    ↓ (TCP传输)
+Logstash
+    ↓ (存储)
+Elasticsearch
+    ↓ (可视化)
+Kibana
+
+微服务应用
+    ↓ (追踪信息)
+Zipkin Client
+    ↓ (HTTP上报)
+Zipkin Server
+    ↓ (可视化)
+Zipkin UI
+```
+
+主要特性：
+- 所有微服务均集成统一日志配置，确保日志格式一致性
+- 通过 Logback 将日志实时发送到 Logstash 进行集中处理
+- 集成 Zipkin 实现全链路追踪，便于排查跨服务调用问题
+- 支持 MySQL 数据库操作追踪，全面掌握数据访问性能
 
 ## 公众号
 
