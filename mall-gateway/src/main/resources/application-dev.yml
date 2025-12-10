@@ -66,6 +66,28 @@ spring:
     port: 30379
     host: 172.16.106.130
     password:
+  zipkin:
+    base-url: http://localhost:9411 # Zipkin 服务器地址
+    enabled: true
+    discovery-client-enabled: false
+    sender:
+      type: web
+    service:
+      name: ${spring.application.name}
+    compression:
+      enabled: true
+  sleuth:
+    propagation:
+      tag:
+        whitelisted-keys:
+          - dunshan
+        enabled: true
+      keys:
+        - dunshan
+    sampler: #采样器
+      probability: 1.0 #采样率，采样率是采集Trace的比率，默认0.1
+      rate: 10000 #每秒数据采集量，最多n条/秒Trace
+
 secure:
   ignore:
     urls: #配置白名单路径

@@ -62,6 +62,17 @@
             <artifactId>hibernate-validator</artifactId>
             <version>6.0.18.Final</version>
         </dependency>
+        <!--Zipkin 客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <!-- Brave 对 MySQL8 的支持 -->
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-instrumentation-mysql8</artifactId>
+            <scope>runtime</scope>
+        </dependency>
     </dependencies>
 <!--    <build>-->
 <!--        <plugins>-->

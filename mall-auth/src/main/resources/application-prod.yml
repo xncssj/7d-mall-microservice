@@ -1,7 +1,7 @@
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://mysql-min:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      url: jdbc:mysql://mysql-min:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&queryInterceptors=brave.mysql8.TracingQueryInterceptor
       username: reader
       password: 123456
       initial-size: 5 #连接池初始化大小
@@ -18,6 +18,27 @@ spring:
     port: 6379 # Redis服务器连接端口
     password:  # Redis服务器连接密码（默认为空）
     timeout: 3000ms # 连接超时时间（毫秒）
+  zipkin:
+    base-url: http://localhost:9411 # Zipkin 服务器地址
+    enabled: true
+    discovery-client-enabled: false
+    sender:
+      type: web
+    service:
+      name: ${spring.application.name}
+    compression:
+      enabled: true
+  sleuth:
+    propagation:
+      tag:
+        whitelisted-keys:
+          - dunshan
+        enabled: true
+      keys:
+        - dunshan
+    sampler: #采样器
+      probability: 1.0 #采样率，采样率是采集Trace的比率，默认0.1
+      rate: 10000 #每秒数据采集量，最多n条/秒Trace
   jmx:
     enabled: true
 mybatis:
@@ -50,4 +71,3 @@ feign:
 ribbon:
   ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
   ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
-

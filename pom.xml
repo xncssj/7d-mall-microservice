@@ -57,6 +57,8 @@
         <nimbus-jose-jwt.version>8.16</nimbus-jose-jwt.version>
         <mall-common.version>1.0-SNAPSHOT</mall-common.version>
         <mall-mbg.version>1.0-SNAPSHOT</mall-mbg.version>
+        <zipkin.version>2.2.8.RELEASE</zipkin.version>
+        <zipkin.mysql8.version>5.13.3</zipkin.mysql8.version>
         <!--<mall-security.version>1.0-SNAPSHOT</mall-security.version>-->
     </properties>
 
@@ -219,6 +221,19 @@
                 <groupId>io.minio</groupId>
                 <artifactId>minio</artifactId>
                 <version>${minio.version}</version>
+            </dependency>
+            <!--Zipkin 客户端-->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-starter-zipkin</artifactId>
+                <version>${zipkin.version}</version>
+            </dependency>
+            <!-- Brave 对 MySQL8 的支持 -->
+            <dependency>
+                <groupId>io.zipkin.brave</groupId>
+                <artifactId>brave-instrumentation-mysql8</artifactId>
+                <version>${zipkin.mysql8.version}</version>
+                <scope>runtime</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>

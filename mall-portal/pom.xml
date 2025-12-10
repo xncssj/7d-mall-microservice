@@ -20,6 +20,10 @@
     <dependencies>
         <dependency>
             <groupId>com.dunshan.mall</groupId>
+            <artifactId>mall-common</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.dunshan.mall</groupId>
             <artifactId>mall-mbg</artifactId>
         </dependency>
         <!--mongodb依赖配置-->
@@ -56,6 +60,17 @@
         <dependency>
             <groupId>io.github.openfeign</groupId>
             <artifactId>feign-okhttp</artifactId>
+        </dependency>
+        <!--Zipkin 客户端-->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+        <!-- Brave 对 MySQL8 的支持 -->
+        <dependency>
+            <groupId>io.zipkin.brave</groupId>
+            <artifactId>brave-instrumentation-mysql8</artifactId>
+            <scope>runtime</scope>
         </dependency>
     </dependencies>
 

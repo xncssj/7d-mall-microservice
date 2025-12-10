@@ -45,7 +45,7 @@ public class MemberAttentionServiceImpl implements MemberAttentionService {
     @Override
     public int delete(Long brandId) {
         UmsMember member = memberService.getCurrentMember();
-        return memberBrandAttentionRepository.deleteByMemberIdAndBrandId(member.getId(),brandId);
+        return (int) memberBrandAttentionRepository.deleteByMemberIdAndBrandId(member.getId(),brandId);
     }
 
     @Override
