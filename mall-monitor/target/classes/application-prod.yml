@@ -1,5 +1,0 @@
-spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: http://cloud-nacos-registry:8848

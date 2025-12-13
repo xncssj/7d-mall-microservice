@@ -18,7 +18,7 @@ spring:
       type: web
     service:
       name: ${spring.application.name}
-    compression:g
+    compression:
       enabled: true
   sleuth:
     propagation:
