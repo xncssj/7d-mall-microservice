@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 172.16.62.179:8848
+      config:
+        server-addr: 172.16.62.179:8848
+        file-extension: yaml
+    sentinel:
+      transport:
+        dashboard: 172.16.62.179:8858
+      eager: true
+  sleuth:
+    sampler: #采样器
+      probability: 1.0 #采样率，采样率是采集Trace的比率，默认0.1
+      rate: 10000 #每秒数据采集量，最多n条/秒Trace
+  zipkin:
+    #设置zipkin服务端地址
+    base-url: http://172.16.62.179:9411

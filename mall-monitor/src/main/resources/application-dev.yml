@@ -1,5 +1,8 @@
-spring:
-  cloud:
-    nacos:
-      discovery:
-        server-addr: 172.16.106.130:30838
+# Spring Boot Admin 监控配置
+# Nacos 配置在 bootstrap-dev.yml 中
+
+# 禁用 Redis 健康检查（监控模块不需要 Redis）
+management:
+  health:
+    redis:
+      enabled: false

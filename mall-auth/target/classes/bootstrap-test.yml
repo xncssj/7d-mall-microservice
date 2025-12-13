@@ -1,0 +1,20 @@
+spring:
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://172.16.106.251 :8848
+        namespace: xuxinwei
+      config:
+        server-addr: http://172.16.106.251 :8848
+        file-extension: yaml
+    sentinel:
+      transport:
+        dashboard: http://172.16.106.251 :8858
+        port: 8719
+      eager: true
+  redis:
+    host: 172.16.106.251  # Redis服务器地址
+    database: 0 # Redis数据库索引（默认为0）
+    port: 6379 # Redis服务器连接端口
+    password:  # Redis服务器连接密码（默认为空）
+    timeout: 3000ms # 连接超时时间（毫秒）

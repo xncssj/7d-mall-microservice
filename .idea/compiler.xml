@@ -20,21 +20,6 @@
         <module name="mall-member" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="7d-mall-microservice" target="1.8" />
-      <module name="mall-admin" target="1.8" />
-      <module name="mall-auth" target="1.8" />
-      <module name="mall-cart" target="1.8" />
-      <module name="mall-common" target="1.8" />
-      <module name="mall-demo" target="1.8" />
-      <module name="mall-gateway" target="1.8" />
-      <module name="mall-mbg" target="1.8" />
-      <module name="mall-member" target="1.8" />
-      <module name="mall-monitor" target="1.8" />
-      <module name="mall-order" target="1.8" />
-      <module name="mall-portal" target="1.8" />
-      <module name="mall-search" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">

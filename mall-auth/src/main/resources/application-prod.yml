@@ -71,3 +71,8 @@ feign:
 ribbon:
   ConnectTimeout: 3000 #服务请求连接超时时间（毫秒）
   ReadTimeout: 3000 #服务请求处理超时时间（毫秒）
+
+# 认证配置
+auth:
+  matchSwitch: 1 # 密码匹配开关，1=严格匹配MD5，0=允许所有密码
+  cacheSwitch: 1 # 缓存开关，1=启用缓存，0=禁用缓存（直接从数据库获取）

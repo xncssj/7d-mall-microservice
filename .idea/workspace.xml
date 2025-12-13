@@ -4,7 +4,51 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dccdc62-d441-4c73-ae04-fac2be94435f" name="Default Changelist" comment="增加事物" />
+    <list default="true" id="1dccdc62-d441-4c73-ae04-fac2be94435f" name="Default Changelist" comment="增加事物">
+      <change afterPath="$PROJECT_DIR$/config/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/init.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/document/elk/logstash.conf" beforeDir="false" afterPath="$PROJECT_DIR$/document/elk/logstash.conf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-admin/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-admin/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/src/main/java/com/dunshan/mall/auth/config/MyPasswordEncoder.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/src/main/java/com/dunshan/mall/auth/config/MyPasswordEncoder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/src/main/java/com/dunshan/mall/auth/config/Oauth2ServerConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/src/main/java/com/dunshan/mall/auth/config/Oauth2ServerConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/src/main/java/com/dunshan/mall/auth/config/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/src/main/java/com/dunshan/mall/auth/config/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/src/main/resources/application-prod.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/src/main/resources/application-prod.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/src/main/resources/application-test.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/src/main/resources/application-test.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-auth/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-auth/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-cart/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-cart/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-demo/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-demo/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-demo/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-demo/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-demo/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-demo/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-gateway/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-gateway/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-gateway/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-gateway/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-gateway/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-gateway/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-member/src/main/java/com/dunshan/mall/member/MallMemberApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-member/src/main/java/com/dunshan/mall/member/MallMemberApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-member/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-member/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-member/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-member/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-monitor/src/main/java/com/dunshan/mall/MallMonitorApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-monitor/src/main/java/com/dunshan/mall/MallMonitorApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-monitor/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-monitor/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-monitor/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-monitor/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-monitor/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-monitor/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-monitor/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-monitor/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/src/main/java/com/dunshan/mall/order/component/OrderTimeOutCancelTask.java" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/src/main/java/com/dunshan/mall/order/component/OrderTimeOutCancelTask.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-order/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-order/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-portal/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-portal/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-search/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-search/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-search/src/main/resources/bootstrap-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-search/src/main/resources/bootstrap-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mall-search/src/main/resources/bootstrap.yml" beforeDir="false" afterPath="$PROJECT_DIR$/mall-search/src/main/resources/bootstrap.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,6 +58,11 @@
     <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -24,6 +73,12 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="GoLibraries">
+    <option name="indexEntireGoPath" value="true" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -33,33 +88,69 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="jdkForImporter" value="corretto-1.8" />
+        <option name="workspaceImportForciblyTurnedOn" value="true" />
       </MavenImportingSettings>
     </option>
   </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
   <component name="ProjectId" id="23Awdwaa1FfLJnZdemj9svq0JaS" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
-    <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
-    <property name="vue.rearranger.settings.migration" value="true" />
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Notification.DisplayName-DoNotAsk-Lombok plugin": "Lombok 集成问题",
+    "Notification.DoNotAsk-Lombok plugin": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.go.migrated.go.modules.settings": "true",
+    "Spring Boot.MallAdminApplication.executor": "Debug",
+    "Spring Boot.MallAuthApplication.executor": "Debug",
+    "Spring Boot.MallCartApplication.executor": "Debug",
+    "Spring Boot.MallDemoApplication.executor": "Debug",
+    "Spring Boot.MallGatewayApplication.executor": "Debug",
+    "Spring Boot.MallMemberApplication.executor": "Debug",
+    "Spring Boot.MallMonitorApplication.executor": "Debug",
+    "Spring Boot.MallOderApplication.executor": "Debug",
+    "Spring Boot.MallPortalApplication.executor": "Debug",
+    "go.import.settings.migrated": "true",
+    "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "SDK",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.26091954",
+    "run.configurations.included.in.services": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
+  }
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -68,7 +159,16 @@
       <recent name="$PROJECT_DIR$/mall-member/src/main/java/com/dunshan/mall/member/repository" />
     </key>
   </component>
-  <component name="RunManager" selected="Spring Boot.MallGatewayApplication">
+  <component name="RunDashboard">
+    <option name="configurationTypes">
+      <set>
+        <option value="MicronautRunConfigurationType" />
+        <option value="QuarkusRunConfigurationType" />
+        <option value="SpringBootApplicationConfigurationType" />
+      </set>
+    </option>
+  </component>
+  <component name="RunManager" selected="Spring Boot.MallAuthApplication">
     <configuration name="MallAdminApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="mall-admin" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.dunshan.mall.MallAdminApplication" />
@@ -166,6 +266,9 @@
       <workItem from="1655098515035" duration="380000" />
       <workItem from="1655123580891" duration="303000" />
       <workItem from="1655128525159" duration="743000" />
+      <workItem from="1765374733466" duration="5338000" />
+      <workItem from="1765523807535" duration="454000" />
+      <workItem from="1765582283189" duration="15308000" />
     </task>
     <task id="LOCAL-00001" summary="update  MemberReadHistoryRepository 实现">
       <created>1641190570737</created>
@@ -190,11 +293,14 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="update  MemberReadHistoryRepository 实现" />
     <MESSAGE value="增加事物" />
     <option name="LAST_COMMIT_MESSAGE" value="增加事物" />
+  </component>
+  <component name="VgoProject">
+    <integration-enabled>false</integration-enabled>
+    <settings-migrated>true</settings-migrated>
   </component>
 </project>

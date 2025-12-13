@@ -3,7 +3,7 @@ package com.dunshan.mall.auth.config;
 import com.dunshan.mall.auth.component.JwtTokenEnhancer;
 import com.dunshan.mall.auth.service.impl.UserServiceImpl;
 import com.dunshan.mall.common.constant.AuthConstant;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.ClassPathResource;
@@ -27,7 +27,7 @@ import java.util.List;
  * 认证服务器配置
  * Created by dunshan on 2020/6/19.
  */
-@AllArgsConstructor
+@RequiredArgsConstructor
 @Configuration
 @EnableAuthorizationServer
 public class Oauth2ServerConfig extends AuthorizationServerConfigurerAdapter {

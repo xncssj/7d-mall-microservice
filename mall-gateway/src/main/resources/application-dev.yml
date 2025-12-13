@@ -63,11 +63,11 @@ spring:
           jwk-set-uri: 'http://gateway-mall-gateway:8201/mall-auth/rsa/publicKey' #配置RSA的公钥访问地址
   redis:
     database: 0
-    port: 30379
-    host: 172.16.106.130
-    password:
+    port: 6379
+    host: 10.211.55.15
+    password: 123456
   zipkin:
-    base-url: http://localhost:9411 # Zipkin 服务器地址
+    base-url: http://10.211.55.15:9411 # Zipkin 服务器地址
     enabled: true
     discovery-client-enabled: false
     sender:

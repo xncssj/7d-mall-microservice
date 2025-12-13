@@ -9,7 +9,6 @@ spring:
     admin:
       discovery:
         ignored-services: ${spring.application.name}
-  profiles:
-    active: test
+  # profiles.active 在 bootstrap.yml 中配置，这里不需要重复配置
 server:
   port: 8101

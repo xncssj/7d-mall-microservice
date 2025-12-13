@@ -2,4 +2,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 172.16.106.130:30838
+        server-addr: 10.211.55.15:8848
+        # Nacos 认证已禁用，无需配置 username 和 password
+      config:
+        server-addr: 10.211.55.15:8848
+        file-extension: yaml
+        # Nacos 认证已禁用，无需配置 username 和 password

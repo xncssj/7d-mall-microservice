@@ -5,7 +5,7 @@ server:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://172.16.106.130:30336/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&queryInterceptors=brave.mysql8.TracingQueryInterceptor
+      url: jdbc:mysql://10.211.55.15:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&queryInterceptors=brave.mysql8.TracingQueryInterceptor&exceptionInterceptors=brave.mysql8.TracingExceptionInterceptor
       username: reader
       password: 123456
       initial-size: 5 #连接池初始化大小
@@ -18,23 +18,22 @@ spring:
         login-password: druid
   data:
     mongodb:
-      host: 172.16.106.130
-      port: 30760
-      database: mall-port
+      uri: mongodb://admin:123456@10.211.55.15:27017/mall-port?authSource=admin # MongoDB 连接 URI（MongoDB 6.0 默认使用 SCRAM-SHA-256，也兼容 SCRAM-SHA-1）
+      auto-index-creation: true
   redis:
-    host: 172.16.106.130 # Redis服务器地址
+    host: 10.211.55.15 # Redis服务器地址
     database: 0 # Redis数据库索引（默认为0）
-    port: 30379 # Redis服务器连接端口
-    password:  # Redis服务器连接密码（默认为空）
+    port: 6379 # Redis服务器连接端口
+    password: 123456 # Redis服务器连接密码
     timeout: 3000ms # 连接超时时间（毫秒）
   rabbitmq:
-    host: 172.16.106.130
-    port: 30993
+    host: 10.211.55.15
+    port: 5672 # RabbitMQ AMQP 端口（与 docker-compose.yml 一致）
     virtual-host: /mall
-    username: mall
-    password: mall
+    username: admin # RabbitMQ 默认用户（与 docker-compose.yml 一致）
+    password: 123456 # RabbitMQ 默认密码（与 docker-compose.yml 一致）
   zipkin:
-    base-url: http://localhost:9411 # Zipkin 服务器地址
+    base-url: http://10.211.55.15:9411 # Zipkin 服务器地址
     enabled: true
     discovery-client-enabled: false
     sender:
@@ -68,6 +67,9 @@ management: #开启SpringBoot Admin的监控
   endpoint:
     health:
       show-details: always
+  health:
+    mongo:
+      enabled: false # 禁用 MongoDB 健康检查（如果 MongoDB 未配置或不可用）
 
 # 自定义redis key
 redis:

@@ -2,9 +2,9 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 172.16.62.179:8848
+        server-addr: 10.211.55.15:8848
       config:
-        server-addr: 172.16.62.179:8848
+        server-addr: 10.211.55.15:8848
         file-extension: yaml
     sentinel:
       transport:

@@ -3,11 +3,13 @@ package com.dunshan.mall.auth.config;
 import com.dunshan.mall.auth.util.MD5Utility;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Component;
 
 /**
  * @author xuxinwei
  * @create 2020-12-19
  */
+@Component
 public class MyPasswordEncoder implements PasswordEncoder {
 
     @Value("${auth.matchSwitch}")

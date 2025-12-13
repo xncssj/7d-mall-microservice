@@ -2,10 +2,14 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: 172.16.106.130:30838
+        server-addr: 10.211.55.15:8848
+        username: nacos
+        password: nacos
       config:
-        server-addr: 172.16.106.130:30838
+        server-addr: 10.211.55.15:8848
         file-extension: yaml
+        username: nacos
+        password: nacos
     sentinel:
       transport:
         dashboard: http://sentinel-dashboard.demo.com

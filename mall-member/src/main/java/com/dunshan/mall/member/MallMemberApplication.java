@@ -19,7 +19,6 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 public class MallMemberApplication {
 
     public static void main(String[] args) {
-
         SpringApplication.run(MallMemberApplication.class, args);
     }
 }

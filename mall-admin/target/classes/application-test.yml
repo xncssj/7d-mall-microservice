@@ -1,0 +1,72 @@
+server:
+  port: 8087
+spring:
+  datasource:
+    druid:
+      url: jdbc:mysql://172.16.106.251:3306/mall_full_link?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+      username: vbi
+      password: 123456
+      initial-size: 5 #���ӳس�ʼ����С
+      min-idle: 10 #��С����������
+      max-active: 20 #���������
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #��ͳ����Щ��������
+      stat-view-servlet: #���ʼ����ҳ�ĵ�¼�û���������
+        login-username: druid
+        login-password: druid
+  redis:
+    host: 172.16.62.179 # Redis��������ַ
+    database: 1 # Redis���ݿ�������Ĭ��Ϊ0��
+    port: 6379 # Redis���������Ӷ˿�
+    password:  # Redis�������������루Ĭ��Ϊ�գ�
+    timeout: 3000ms # ���ӳ�ʱʱ�䣨���룩
+  rabbitmq: #rabbitmq�������
+    host: 172.16.62.179
+    port: 5672
+    username: mall
+    password: mall
+  servlet:
+    multipart:
+      enabled: true #�����ļ��ϴ�
+      max-file-size: 10MB #�����ļ��ϴ���СΪ10M
+mybatis:
+  mapper-locations:
+    - classpath:dao/*.xml
+    - classpath*:com/**/mapper/*.xml
+management: #����SpringBoot Admin�ļ��
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+redis:
+  database: mall
+  key:
+    admin: 'ums:admin'
+  expire:
+    common: 86400 # 24Сʱ
+aliyun:
+  oss:
+    endpoint: oss-cn-beijing.aliyuncs.com # oss�������ķ�������
+    accessKeyId: LTAI4G1VRffC4D7CmBv5dFwZ # ���������֤���õ��û���ʶ
+    accessKeySecret: v8afbIbKpjPqiI26slcdXQHB0kjJDR # �û����ڼ���ǩ���ַ�����oss������֤ǩ���ַ�������Կ
+    bucketName: perfo7 # oss�Ĵ洢�ռ�
+    policy:
+      expire: 300 # ǩ����Ч��(S)
+    maxSize: 10 # �ϴ��ļ���С(M)
+    callback: http://localhost:8080/aliyun/oss/callback # �ļ��ϴ��ɹ���Ļص���ַ
+    dir:
+      prefix: mall/images/ # �ϴ��ļ���·��ǰ׺
+minio:
+  endpoint: http://192.168.6.132:9090 #MinIO�������ڵ�ַ
+  bucketName: mall #�洢Ͱ����
+  accessKey: minioadmin #���ʵ�key
+  secretKey: minioadmin #���ʵ���Կ
+feign:
+  okhttp:
+    enabled: true
+ribbon:
+  ConnectTimeout: 3000 #�����������ӳ�ʱʱ�䣨���룩
+  ReadTimeout: 3000 #����������ʱʱ�䣨���룩

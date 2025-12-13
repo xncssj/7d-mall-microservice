@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/7d-mall-microservice.iml" filepath="$PROJECT_DIR$/7d-mall-microservice.iml" />
       <module fileurl="file://$PROJECT_DIR$/mall-admin/mall-admin.iml" filepath="$PROJECT_DIR$/mall-admin/mall-admin.iml" />
       <module fileurl="file://$PROJECT_DIR$/mall-auth/mall-auth.iml" filepath="$PROJECT_DIR$/mall-auth/mall-auth.iml" />
       <module fileurl="file://$PROJECT_DIR$/mall-cart/mall-cart.iml" filepath="$PROJECT_DIR$/mall-cart/mall-cart.iml" />

@@ -13,5 +13,7 @@
     <file url="file://$PROJECT_DIR$/mall-order/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-portal/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mall-search/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
   </component>
 </project>

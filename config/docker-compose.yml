@@ -1,0 +1,240 @@
+# 自定义网络（所有服务互通）
+networks:
+  middleware-net:
+    driver: bridge
+
+# 全局变量
+x-common-env: &common-env
+  TZ: Asia/Shanghai
+
+services:
+  # ========== Zipkin ==========
+  zipkin:
+    image: openzipkin/zipkin
+    container_name: zipkin
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "9411:9411"
+    environment:
+      <<: *common-env
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "localhost:9411/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  # ========== MySQL ==========
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "3306:3306"
+    volumes:
+      - /data/middleware/mysql/data:/var/lib/mysql
+      - /data/middleware/mysql/conf:/etc/mysql/conf.d
+      - /data/middleware/mysql/logs:/var/log/mysql
+    environment:
+      <<: *common-env
+      MYSQL_ROOT_PASSWORD: "123456"
+      MYSQL_CHARACTER_SET_SERVER: "utf8mb4"
+      MYSQL_COLLATION_SERVER: "utf8mb4_unicode_ci"
+    command:
+      - --default-authentication-plugin=mysql_native_password
+      - --max_connections=1000
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-uroot", "-p123456", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
+
+  # ========== Redis (开发环境简化配置) ==========
+  redis-1:
+    image: redis:latest
+    container_name: redis-1
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "6379:6379"
+    command: redis-server /etc/redis/redis.conf
+    environment: *common-env
+    volumes:
+      - /data/middleware/redis/data/redis-1:/data
+      - /data/middleware/redis/conf/redis-1.conf:/etc/redis/redis.conf
+
+  redis-2:
+    image: redis:latest
+    container_name: redis-2
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "6380:6379"
+    command: redis-server /etc/redis/redis.conf
+    environment: *common-env
+    volumes:
+      - /data/middleware/redis/data/redis-2:/data
+      - /data/middleware/redis/conf/redis-2.conf:/etc/redis/redis.conf
+
+  # ========== RabbitMQ ==========
+  rabbitmq:
+    image: rabbitmq:management
+    container_name: rabbitmq
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - /data/middleware/rabbitmq/data:/var/lib/rabbitmq
+      - /data/middleware/rabbitmq/logs:/var/log/rabbitmq
+    environment:
+      <<: *common-env
+      RABBITMQ_DEFAULT_USER: "admin"
+      RABBITMQ_DEFAULT_PASS: "123456"
+      RABBITMQ_MEMORY_HIGH_WATERMARK: "0.8"
+    depends_on:
+      - mysql
+
+  # ========== Nacos ==========
+  nacos:
+    image: nacos/nacos-server:v2.3.2
+    container_name: nacos
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "8848:8848"
+      - "9848:9848"
+    volumes:
+      - /data/middleware/nacos/data:/home/nacos/data
+      - /data/middleware/nacos/logs:/home/nacos/logs
+      # - /data/middleware/nacos/conf:/home/nacos/conf
+    environment:
+      <<: *common-env
+      MODE: "standalone"
+      SPRING_DATASOURCE_PLATFORM: "mysql"
+      MYSQL_SERVICE_HOST: "mysql"
+      MYSQL_SERVICE_PORT: "3306"
+      MYSQL_SERVICE_USER: "root"
+      MYSQL_SERVICE_PASSWORD: "123456"
+      MYSQL_SERVICE_DB_NAME: "nacos_config"
+      NACOS_AUTH_ENABLE: "false"
+      # 显式指定JDBC连接字符串
+      SPRING_DATASOURCE_DRIVER_CLASS_NAME: "com.mysql.cj.jdbc.Driver"
+      SPRING_DATASOURCE_URL: "jdbc:mysql://mysql:3306/nacos_config?characterEncoding=utf8&connectTimeout=1000&socketTimeout=3000&autoReconnect=true&useUnicode=true&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true"
+      SPRING_DATASOURCE_USERNAME: "root"
+      SPRING_DATASOURCE_PASSWORD: "123456"
+    depends_on:
+      mysql:
+        condition: service_healthy  # 等待MySQL健康检查通过再启动
+
+  # ========== MongoDB ==========
+  mongodb:
+    image: mongo:6.0
+    container_name: mongodb
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "27017:27017"
+    volumes:
+      - /data/middleware/mongodb/data:/data/db
+    environment:
+      <<: *common-env
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: 123456
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      interval: 10s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+
+  # ========== Mongo Express (MongoDB管理界面) ==========
+  mongo-express:
+    image: mongo-express:latest
+    container_name: mongo-express
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "8081:8081"
+    environment:
+      <<: *common-env
+      ME_CONFIG_MONGODB_ADMINUSERNAME: admin
+      ME_CONFIG_MONGODB_ADMINPASSWORD: 123456
+      ME_CONFIG_MONGODB_SERVER: mongodb
+    depends_on:
+      mongodb:
+        condition: service_healthy
+
+  # ========== Elasticsearch ==========
+  elasticsearch:
+    image: elasticsearch:7.17.10
+    container_name: elasticsearch
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+      - /data/middleware/elasticsearch/data:/usr/share/elasticsearch/data
+    environment:
+      <<: *common-env
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms512m -Xmx512m"
+      xpack.security.enabled: "false"
+    healthcheck:
+      test: ["CMD-SHELL", "curl --silent --fail localhost:9200/_cluster/health || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 90s
+
+  # ========== Kibana ==========
+  kibana:
+    image: kibana:7.17.10
+    container_name: kibana
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "5601:5601"
+    volumes:
+      - /data/middleware/kibana/data:/usr/share/kibana/data
+    environment:
+      <<: *common-env
+      ELASTICSEARCH_HOSTS: '["http://elasticsearch:9200"]'
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
+
+  # ========== Logstash ==========
+  logstash:
+    image: logstash:7.17.10
+    container_name: logstash
+    restart: always
+    networks:
+      - middleware-net
+    ports:
+      - "4560:4560"
+      - "4561:4561"
+      - "4562:4562"
+      - "4563:4563"
+    volumes:
+      - /data/middleware/logstash/data:/usr/share/logstash/data
+      - ./document/elk:/usr/share/logstash/pipeline
+    environment:
+      <<: *common-env
+    depends_on:
+      - elasticsearch

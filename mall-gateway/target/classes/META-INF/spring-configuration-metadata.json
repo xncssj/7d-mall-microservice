@@ -1,0 +1,17 @@
+{
+  "groups": [
+    {
+      "name": "secure.ignore",
+      "type": "com.dunshan.mall.config.IgnoreUrlsConfig",
+      "sourceType": "com.dunshan.mall.config.IgnoreUrlsConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "secure.ignore.urls",
+      "type": "java.util.List<java.lang.String>",
+      "sourceType": "com.dunshan.mall.config.IgnoreUrlsConfig"
+    }
+  ],
+  "hints": []
+}

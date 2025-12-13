@@ -3,7 +3,7 @@ server:
 spring:
   datasource:
     druid:
-      url: jdbc:mysql://172.16.106.130:30336/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&queryInterceptors=brave.mysql8.TracingQueryInterceptor
+      url: jdbc:mysql://10.211.55.15:3306/mall?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai&queryInterceptors=brave.mysql8.TracingQueryInterceptor&exceptionInterceptors=brave.mysql8.TracingExceptionInterceptor
       username: reader
       password: 123456
       initial-size: 5 #连接池初始化大小
@@ -20,11 +20,11 @@ spring:
         enabled: true
   elasticsearch:
     rest:
-      uris: 172.16.106.130:30200
+      uris: 10.211.55.15:9200
       username: elastic
       password: admin@123
   zipkin:
-    base-url: http://localhost:9411 # Zipkin 服务器地址
+    base-url: http://10.211.55.15:9411 # Zipkin 服务器地址
     enabled: true
     discovery-client-enabled: false
     sender:

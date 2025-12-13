@@ -1,0 +1,12 @@
+com/dunshan/mall/search/repository/EsProductRepository.class
+com/dunshan/mall/search/controller/EsProductController.class
+com/dunshan/mall/search/domain/EsProduct.class
+com/dunshan/mall/search/service/EsProductService.class
+com/dunshan/mall/search/config/MyBatisConfig.class
+com/dunshan/mall/search/service/impl/EsProductServiceImpl.class
+com/dunshan/mall/search/domain/EsProductRelatedInfo$ProductAttr.class
+com/dunshan/mall/search/MallSearchApplication.class
+com/dunshan/mall/search/config/SwaggerConfig.class
+com/dunshan/mall/search/dao/EsProductDao.class
+com/dunshan/mall/search/domain/EsProductAttributeValue.class
+com/dunshan/mall/search/domain/EsProductRelatedInfo.class
