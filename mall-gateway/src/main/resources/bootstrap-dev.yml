@@ -3,13 +3,13 @@ spring:
     nacos:
       discovery:
         server-addr: 10.211.55.15:8848
-        username: nacos
-        password: nacos
+        
+        
       config:
         server-addr: 10.211.55.15:8848
         file-extension: yaml
-        username: nacos
-        password: nacos
+        
+        
     sentinel:
       transport:
         dashboard: http://sentinel-dashboard.demo.com
