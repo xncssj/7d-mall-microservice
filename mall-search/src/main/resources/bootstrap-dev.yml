@@ -3,13 +3,32 @@ spring:
     nacos:
       discovery:
         server-addr: 10.211.55.15:8848
-        
-        
+        # 自动获取 IP：优先使用环境变量 NACOS_IP，否则自动检测（排除 Docker 网络）
+        ip: ${NACOS_IP:}  # 可通过环境变量 NACOS_IP 指定，为空则自动检测
+        # Nacos 认证已禁用，无需配置 username 和 password
+      # 配置网络接口选择规则，自动排除 Docker 网络接口
+      inetutils:
+        preferred-networks:
+          - 10.211  # 优先选择 10.211.x.x 网段
+          - 192.168  # 其次选择 192.168.x.x 网段
+          - 172.16   # 再次选择 172.16.x.x 网段（排除 172.17, 172.18 等 Docker 网段）
+        ignored-interfaces:
+          - docker0    # 忽略 Docker 默认网桥
+          - veth.*     # 忽略 Docker 虚拟网卡
+        use-only-site-local-interfaces: false  # 允许使用非本地回环接口
       config:
         server-addr: 10.211.55.15:8848
-        
-        
         file-extension: yaml
+        # 共享配置：从 Nacos 配置中心加载公共配置
+        # shared-configs 配置会在 Nacos 配置中心创建 shared-dev.yml 后生效
+        shared-configs:
+          - data-id: shared-dev.yml
+            group: DEFAULT_GROUP
+            refresh: true  # 支持动态刷新
+        # Nacos 认证已禁用，无需配置 username 和 password
+        # 配置超时参数，避免连接超时
+        timeout: 3000  # 连接超时时间（毫秒）
+        config-long-poll-timeout: 30000  # 长轮询超时时间（毫秒）
     sentinel:
       transport:
         dashboard: http://sentinel-dashboard.demo.com
