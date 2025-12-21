@@ -25,7 +25,9 @@ public class FeignRequestInterceptor implements RequestInterceptor {
             if (headerNames != null) {
                 while (headerNames.hasMoreElements()) {
                     String name = headerNames.nextElement();
-                    if (name.equals("authorization") || name.equals("user") || name.equals("x") ) {
+                    // 添加对Sleuth追踪头的传递支持
+                    if (name.equals("authorization") || name.equals("user") || name.equals("x") ||
+                        name.startsWith("x-b3-") || name.startsWith("X-B3-") || name.equals("b3")) {
                         String values = request.getHeader(name);
                         requestTemplate.header(name, values);
                     }

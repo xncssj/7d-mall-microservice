@@ -43,6 +43,9 @@ spring:
     compression:
       enabled: true
   sleuth:
+    web:
+      client:
+        enabled: true
     propagation:
       tag:
         whitelisted-keys:
