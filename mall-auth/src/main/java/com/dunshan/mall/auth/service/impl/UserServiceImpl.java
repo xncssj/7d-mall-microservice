@@ -49,12 +49,20 @@ public class UserServiceImpl implements UserDetailsService {
         UserDto userDto = null;
         if (AuthConstant.ADMIN_CLIENT_ID.equals(clientId)) {
             userDto = adminFeign.loadUserByUsername(username);
+            // 为管理员账户密码添加bcrypt前缀，如果还没有的话
+            if (userDto != null && userDto.getPassword() != null && !userDto.getPassword().startsWith("{")) {
+                userDto.setPassword("{bcrypt}" + userDto.getPassword());
+            }
         } else {
             if ("1".equals(cacheSwitch)) {
                 userDto = getMemberFromCache(username);
             }
             if (userDto == null) {
                 userDto = memberService.loadUserByUsername(username);
+            }
+            // 为前台会员账户密码添加MD5前缀，如果还没有的话
+            if (userDto != null && userDto.getPassword() != null && !userDto.getPassword().startsWith("{")) {
+                userDto.setPassword("{MD5}" + userDto.getPassword());
             }
         }
         if (userDto == null) {
@@ -80,6 +88,10 @@ public class UserServiceImpl implements UserDetailsService {
             UserDto userDto = new UserDto();
             BeanUtil.copyProperties(member, userDto);
             userDto.setRoles(CollUtil.toList("前台会员"));
+            // 为前台会员账户密码添加MD5前缀，如果还没有的话
+            if (userDto.getPassword() != null && !userDto.getPassword().startsWith("{")) {
+                userDto.setPassword("{MD5}" + userDto.getPassword());
+            }
             return userDto;
         }
         return null;

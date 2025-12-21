@@ -8,7 +8,12 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.DelegatingPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * SpringSecurity配置
@@ -38,7 +43,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return myPasswordEncoder;
+        // 创建 DelegatingPasswordEncoder，注册自定义 MD5 编码器
+        // 这样可以避免 "There is no PasswordEncoder mapped for the id 'null'" 错误
+        Map<String, PasswordEncoder> encoders = new HashMap<>();
+        encoders.put("MD5", myPasswordEncoder);
+        encoders.put("bcrypt", new BCryptPasswordEncoder());
+        // 设置默认编码器为我们的自定义编码器
+        DelegatingPasswordEncoder delegatingPasswordEncoder = new DelegatingPasswordEncoder("MD5", encoders);
+        // 设置默认编码器，用于处理没有前缀的密码
+        delegatingPasswordEncoder.setDefaultPasswordEncoderForMatches(myPasswordEncoder);
+        return delegatingPasswordEncoder;
     }
 
 }

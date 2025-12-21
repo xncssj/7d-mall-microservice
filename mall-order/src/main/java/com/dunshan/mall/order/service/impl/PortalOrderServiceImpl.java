@@ -6,6 +6,7 @@ import cn.hutool.json.JSONUtil;
 import com.alibaba.fastjson.JSON;
 import com.dunshan.mall.common.api.CommonPage;
 import com.dunshan.mall.common.api.CommonResult;
+import com.dunshan.mall.common.exception.ApiException;
 import com.dunshan.mall.common.exception.Asserts;
 import com.dunshan.mall.common.service.RedisService;
 import com.dunshan.mall.mapper.*;
@@ -126,7 +127,7 @@ public class PortalOrderServiceImpl implements PortalOrderService {
         } catch (RuntimeException e) {
             List<SmsCouponHistoryDetail> couponHistoryDetailList = new ArrayList<>();
             result.setCouponHistoryDetailList(couponHistoryDetailList);
-            logger.error("调用异常 java.lang.RuntimeException: com.netflix.client.ClientException", e.fillInStackTrace());
+            logger.error("调用异常 java.lang.RuntimeException: com.netflix.client.ClientException: {}", e.getMessage());
         }
 
         //获取用户积分
@@ -179,14 +180,13 @@ public class PortalOrderServiceImpl implements PortalOrderService {
         }
 
         //判断使用使用了优惠券
-//        youhuijuan(orderParam, orderItemList, cartPromotionItemList);
+        applyCoupon(orderParam, orderItemList, cartPromotionItemList);
 
         //判断是否使用积分
-//        panduanjifen(orderParam, orderItemList, currentMember);
-
+        panduanjifen(orderParam, orderItemList, currentMember);
 
         //计算order_item的实付金额
-//        handleRealAmount(orderItemList);
+        handleRealAmount(orderItemList);
         //进行库存锁定
         lockStock(cartPromotionItemList);
         //根据商品合计、运费、活动优惠、优惠券、积分计算应付金额
@@ -283,10 +283,10 @@ public class PortalOrderServiceImpl implements PortalOrderService {
         }
 
         //删除购物车中的下单商品
-//        deleteCartItemList(cartPromotionItemList, currentMember);
+        deleteCartItemList(cartPromotionItemList, currentMember);
 
         //发送延迟消息取消订单
-//        sendDelayMessageCancelOrder(order.getId());
+        sendDelayMessageCancelOrder(order.getId());
 
         Map<String, Object> result = new HashMap<>();
         result.put("order", order);
@@ -317,7 +317,7 @@ public class PortalOrderServiceImpl implements PortalOrderService {
         }
     }
 
-    private void youhuijuan(OrderParam orderParam, List<OmsOrderItem> orderItemList, List<CartPromotionItem> cartPromotionItemList) {
+    private void applyCoupon(OrderParam orderParam, List<OmsOrderItem> orderItemList, List<CartPromotionItem> cartPromotionItemList) {
         if (orderParam.getCouponId() == null) {
             //不用优惠券
             for (OmsOrderItem orderItem : orderItemList) {
@@ -461,26 +461,64 @@ public class PortalOrderServiceImpl implements PortalOrderService {
 
     @Override
     public void confirmReceiveOrder(Long orderId) {
-        try {
-            UmsMember member = memberService.getCurrentMember();
-            OmsOrder order = orderMapper.selectByPrimaryKey(orderId);
-            if (order == null) {
-                Asserts.fail("数据为空！");
-            }
-            if (!member.getId().equals(order.getMemberId())) {
-                Asserts.fail("不能确认他人订单！");
-            }
-            if (order.getStatus() != 2) {
-                Asserts.fail("该订单还未发货！");
-            }
-            order.setStatus(3);
-            order.setConfirmStatus(1);
-            order.setReceiveTime(new Date());
-            orderMapper.updateByPrimaryKey(order);
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            logger.error("请求失败！{}", e);
+        UmsMember member = memberService.getCurrentMember();
+        OmsOrder order = orderMapper.selectByPrimaryKey(orderId);
+        if (order == null) {
+            Asserts.fail("订单不存在！");
+            throw new RuntimeException("订单不存在");
         }
+        if (!member.getId().equals(order.getMemberId())) {
+            Asserts.fail("不能确认他人订单！");
+            throw new RuntimeException("不能确认他人订单");
+        }
+        if (order.getStatus() != 2) {
+            Asserts.fail("该订单还未发货！");
+            throw new RuntimeException("该订单还未发货");
+        }
+        order.setStatus(3);
+        order.setConfirmStatus(1);
+        order.setReceiveTime(new Date());
+        orderMapper.updateByPrimaryKey(order);
+    }
+
+    @Override
+    public void sendOrder(Long orderId, String deliveryCompany, String deliverySn) {
+        // 参数校验
+        if (orderId == null) {
+            Asserts.fail("订单号不能为空！");
+            throw new ApiException("订单号不能为空！");
+        }
+        if (StringUtils.isEmpty(deliveryCompany)) {
+            Asserts.fail("发货公司不能为空！");
+            throw new ApiException("发货公司不能为空！");
+        }
+        if (StringUtils.isEmpty(deliverySn)) {
+            Asserts.fail("快递号不能为空！");
+            throw new ApiException("快递号不能为空！");
+        }
+        if (deliveryCompany.length() > 64) {
+            Asserts.fail("发货公司长度不能超过64个字符！");
+            throw new ApiException("发货公司长度不能超过64个字符！");
+        }
+        if (deliverySn.length() > 64) {
+            Asserts.fail("快递号长度不能超过64个字符！");
+            throw new ApiException("快递号长度不能超过64个字符！");
+        }
+        
+        OmsOrder order = orderMapper.selectByPrimaryKey(orderId);
+        if (order == null) {
+            Asserts.fail("订单不存在！");
+            throw new ApiException("订单不存在！");
+        }
+        if (order.getStatus() != 1) {
+            Asserts.fail("订单尚未付款，无法发货！");
+            throw new ApiException("订单尚未付款，无法发货！");
+        }
+        order.setStatus(2);
+        order.setDeliveryCompany(deliveryCompany);
+        order.setDeliverySn(deliverySn);
+        order.setDeliveryTime(new Date());
+        orderMapper.updateByPrimaryKey(order);
     }
 
     @Override

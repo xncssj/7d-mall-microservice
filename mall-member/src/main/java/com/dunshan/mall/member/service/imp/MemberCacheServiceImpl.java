@@ -4,7 +4,9 @@ import com.dunshan.mall.common.annotation.CacheException;
 import com.dunshan.mall.common.service.RedisService;
 import com.dunshan.mall.member.service.MemberCacheService;
 import com.dunshan.mall.model.UmsMember;
+
 import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -49,6 +51,11 @@ public class MemberCacheServiceImpl implements MemberCacheService {
 
     @Override
     public void setMember(UmsMember member) {
+        // 添加空值检查，防止member为null时调用getId()和getUsername()方法导致空指针异常
+        if (member == null) {
+            throw new RuntimeException("member为null");
+        }
+
         String key = REDIS_DATABASE + ":" + REDIS_KEY_MEMBER + ":" + member.getId();
         redisService.set(key, member, REDIS_EXPIRE);
 

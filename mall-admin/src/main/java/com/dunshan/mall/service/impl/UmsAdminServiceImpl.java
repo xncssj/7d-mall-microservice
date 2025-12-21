@@ -97,6 +97,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
     public CommonResult login(String username, String password) {
         if(StrUtil.isEmpty(username)||StrUtil.isEmpty(password)){
             Asserts.fail("用户名或密码不能为空！");
+            throw  new RuntimeException("用户名或密码不能为空");
         }
         Map<String, String> params = new HashMap<>();
         params.put("client_id", AuthConstant.ADMIN_CLIENT_ID);
@@ -301,6 +302,7 @@ public class UmsAdminServiceImpl implements UmsAdminService {
         String userStr = request.getHeader(AuthConstant.USER_TOKEN_HEADER);
         if(StrUtil.isEmpty(userStr)){
             Asserts.fail(ResultCode.UNAUTHORIZED);
+            throw  new RuntimeException("用户名或密码不能为空");
         }
         UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
         UmsAdmin admin = adminCacheService.getAdmin(userDto.getId());

@@ -56,6 +56,11 @@ public interface PortalOrderService {
     void confirmReceiveOrder(Long orderId);
 
     /**
+     * 订单发货
+     */
+    void sendOrder(Long orderId, String deliveryCompany, String deliverySn);
+
+    /**
      * 分页获取用户订单
      */
     CommonPage<OmsOrderDetail> list(Integer status, Integer pageNum, Integer pageSize);

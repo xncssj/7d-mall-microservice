@@ -16,7 +16,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(value = ApiException.class)
     public CommonResult handle(ApiException e) {
         if (e.getErrorCode() != null) {
-            return CommonResult.failed(e.getErrorCode());
+            return CommonResult.failed(e.getErrorCode(), e.getMessage());
         }
         return CommonResult.failed(e.getMessage());
     }

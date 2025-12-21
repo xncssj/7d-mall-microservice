@@ -1,6 +1,7 @@
 package com.dunshan.mall.common.exception;
 
 import com.dunshan.mall.common.api.IErrorCode;
+import com.dunshan.mall.common.api.ResultCode;
 
 /**
  * 自定义API异常
@@ -16,6 +17,7 @@ public class ApiException extends RuntimeException {
 
     public ApiException(String message) {
         super(message);
+        this.errorCode = ResultCode.BUSINESS_ERROR;
     }
 
     public ApiException(Throwable cause) {

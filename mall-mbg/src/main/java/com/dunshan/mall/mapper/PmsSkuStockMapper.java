@@ -30,5 +30,5 @@ public interface PmsSkuStockMapper {
 
     int updateByPrimaryKey(PmsSkuStock record);
 
-    void updateSkuStock(Long productSkuId, Integer quantity);
+    void updateSkuStock(@Param("id") Long productSkuId, @Param("quantity") Integer quantity);
 }

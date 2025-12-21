@@ -8,6 +8,7 @@ import com.dunshan.mall.order.domain.OrderParam;
 import com.dunshan.mall.order.service.PortalOrderService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -132,6 +133,22 @@ public class PortalOrderController {
     public CommonResult confirmReceiveOrder(Long orderId) {
         portalOrderService.confirmReceiveOrder(orderId);
         return CommonResult.success(null);
+    }
+
+    @ApiOperation("订单发货")
+    @ApiImplicitParams({
+        @ApiImplicitParam(name = "orderId", value = "订单号", required = true, paramType = "query", dataType = "long"),
+        @ApiImplicitParam(name = "deliveryCompany", value = "发货公司", required = true, paramType = "query", dataType = "string"),
+        @ApiImplicitParam(name = "deliverySn", value = "快递号", required = true, paramType = "query", dataType = "string")
+    })
+    @RequestMapping(value = "/sendOrder", method = RequestMethod.POST)
+    @ResponseBody
+    public CommonResult sendOrder(@RequestParam Long orderId, 
+                                 @RequestParam String deliveryCompany, 
+                                 @RequestParam String deliverySn) {
+        // 参数校验已在service层实现
+        portalOrderService.sendOrder(orderId, deliveryCompany, deliverySn);
+        return CommonResult.success(null, "发货成功");
     }
 
     @ApiOperation("用户删除订单")

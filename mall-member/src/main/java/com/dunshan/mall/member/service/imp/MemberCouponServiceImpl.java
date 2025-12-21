@@ -252,4 +252,3 @@ public class MemberCouponServiceImpl implements MemberCouponService {
     }
 
 }
-

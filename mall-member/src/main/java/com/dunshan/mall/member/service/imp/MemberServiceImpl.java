@@ -120,6 +120,7 @@ public class MemberServiceImpl implements MemberService {
         //验证验证码
         if (!verifyAuthCode(authCode, telephone)) {
             Asserts.fail("验证码错误");
+            throw  new RuntimeException("验证码错误");
         }
         //查询是否已有该用户
         UmsMemberExample example = new UmsMemberExample();
@@ -128,6 +129,7 @@ public class MemberServiceImpl implements MemberService {
         List<UmsMember> umsMembers = memberMapper.selectByExample(example);
         if (!CollectionUtils.isEmpty(umsMembers)) {
             Asserts.fail("该用户已经存在");
+            throw  new RuntimeException("该用户已经存在");
         }
         //没有该用户进行添加操作
         UmsMember umsMember = new UmsMember();
@@ -168,10 +170,12 @@ public class MemberServiceImpl implements MemberService {
         List<UmsMember> memberList = memberMapper.selectByExample(example);
         if (CollectionUtils.isEmpty(memberList)) {
             Asserts.fail("该账号不存在");
+            throw  new RuntimeException("该账号不存在");
         }
         //验证验证码
         if (!verifyAuthCode(authCode, telephone)) {
             Asserts.fail("验证码错误");
+            throw  new RuntimeException("验证码错误");
         }
         UmsMember umsMember = memberList.get(0);
         umsMember.setPassword(BCrypt.hashpw(password));
@@ -187,6 +191,7 @@ public class MemberServiceImpl implements MemberService {
             if (StrUtil.isEmpty(userStr)) {
                 LOGGER.info("获取用户信息失败！{}", userStr);
                 Asserts.fail(ResultCode.UNAUTHORIZED);
+                throw  new RuntimeException("获取用户信息失败");
             }
         }
         UserDto userDto = JSONUtil.toBean(userStr, UserDto.class);
@@ -195,7 +200,10 @@ public class MemberServiceImpl implements MemberService {
             return member;
         } else {
             member = getById(userDto.getId());
-            memberCacheService.setMember(member);
+            // 添加空值检查，防止member为null时调用setMember方法导致空指针异常
+            if (member != null) {
+                memberCacheService.setMember(member);
+            }
             return member;
         }
     }
@@ -244,6 +252,7 @@ public class MemberServiceImpl implements MemberService {
     public CommonResult login(String username, String password) {
         if (StrUtil.isEmpty(username) || StrUtil.isEmpty(password)) {
             Asserts.fail("用户名或密码不能为空！");
+            throw  new RuntimeException("用户名或密码不能为空");
         }
         Map<String, String> params = new HashMap<>();
         params.put("client_id", AuthConstant.PORTAL_CLIENT_ID);

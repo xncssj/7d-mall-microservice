@@ -1,6 +1,7 @@
 package com.dunshan.mall.common.exception;
 
 import com.dunshan.mall.common.api.IErrorCode;
+import com.dunshan.mall.common.api.ResultCode;
 
 /**
  * 断言处理类，用于抛出各种API异常
