@@ -27,20 +27,32 @@ public class AuthGlobalFilter implements GlobalFilter, Ordered {
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
         String token = exchange.getRequest().getHeaders().getFirst(AuthConstant.JWT_TOKEN_HEADER);
-        if (StrUtil.isEmpty(token)) {
-            return chain.filter(exchange);
+        // 获取原始请求中的dunshan头部，如果没有则使用默认值
+        String dunshanValue = exchange.getRequest().getHeaders().getFirst("dunshan");
+        if (dunshanValue == null || dunshanValue.isEmpty()) {
+            // 默认值
+            dunshanValue = "7dgroup";
+
         }
-        try {
-            //从token中解析用户信息并设置到Header中去
-            String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
-            JWSObject jwsObject = JWSObject.parse(realToken);
-            String userStr = jwsObject.getPayload().toString();
-            LOGGER.info("AuthGlobalFilter.filter() user:{}",userStr);
-            ServerHttpRequest request = exchange.getRequest().mutate().header(AuthConstant.USER_TOKEN_HEADER, userStr).build();
-            exchange = exchange.mutate().request(request).build();
-        } catch (ParseException e) {
-            e.printStackTrace();
+
+        ServerHttpRequest.Builder builder = exchange.getRequest().mutate()
+                // 添加dunshan标识头
+                .header("dunshan", dunshanValue);
+
+        if (!StrUtil.isEmpty(token)) {
+            try {
+                //从token中解析用户信息并设置到Header中去
+                String realToken = token.replace(AuthConstant.JWT_TOKEN_PREFIX, "");
+                JWSObject jwsObject = JWSObject.parse(realToken);
+                String userStr = jwsObject.getPayload().toString();
+                LOGGER.info("AuthGlobalFilter.filter() user:{}", userStr);
+                builder.header(AuthConstant.USER_TOKEN_HEADER, userStr);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
+        ServerHttpRequest request = builder.build();
+        exchange = exchange.mutate().request(request).build();
         return chain.filter(exchange);
     }
 
