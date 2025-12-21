@@ -1,0 +1,18 @@
+# Nacos 配置中心共享配置
+# Data ID: shared-dev.yml
+# Group: DEFAULT_GROUP
+# 描述: 所有微服务共享的 dev 环境配置
+
+spring:
+  cloud:
+    # 配置网络接口选择规则，自动排除 Docker 网络接口
+    inetutils:
+      preferred-networks:
+        - 10.211  # 优先选择 10.211.x.x 网段
+        - 192.168  # 其次选择 192.168.x.x 网段
+        - 172.16   # 再次选择 172.16.x.x 网段（排除 172.17, 172.18 等 Docker 网段）
+      ignored-interfaces:
+        - docker0    # 忽略 Docker 默认网桥
+        - veth.*     # 忽略 Docker 虚拟网卡
+      use-only-site-local-interfaces: false  # 允许使用非本地回环接口
+

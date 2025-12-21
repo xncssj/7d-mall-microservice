@@ -3,12 +3,8 @@ spring:
     nacos:
       discovery:
         server-addr: 10.211.55.15:8848
-        
-        
       config:
         server-addr: 10.211.55.15:8848
-        
-        
         file-extension: yaml
     sentinel:
       transport:
